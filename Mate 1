@@ -1,0 +1,105 @@
+public class Mat {
+	
+	
+	public static double f(double x) {// metodo para la funcion o sistema
+		double g = 9.81;
+		double m = 68.1;
+		int t = 20;
+		int v = 40;
+		
+		
+		double resultado = 0.0;
+		
+		resultado = (((m*g)/x)*(1-Math.exp(-(x/m) *t ))  )- v;
+		
+		return resultado;
+	}
+	
+	
+
+	public Mat() {
+		// TODO Auto-generated constructor stub
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		// Variables para el metodo de Biseccion
+		double x1=4;
+		double xu=20;
+		double xr=0.0;
+		double ea = 100.0;
+		double fx1 = 0.0;
+		double fxu = 0.0;
+		double fxr  = 0.0;
+		double xrAnterior = 0.0;
+		
+		
+		// Cabecera
+		System.out.println("i   |    x1    | xu     |  xr   |   f(x1)    |   f(xu)    |    fxr   |  xrAnterior ");
+		
+		
+		if(   (f(x1)*f(xu))<0)  {//Evaluar si hay raiz en el rango
+			
+			
+			// Metodo Biseccion
+			
+			do {
+				/*
+				 * 1.Calcular xr
+				 * 2.calcular las fx
+				 * 3.Evaluar donde se encuentra la raiz si entre x1 y xr o entre xr y xu, Asignar el valor de xr a x1 o xu segun la evaluacion
+				 * 4. Calcular Ea
+				 * 5. Imprimir resultados
+				 */
+				
+				xrAnterior = xr;
+				
+				//Xr calculado
+				xr = (x1 + xu) /2;
+				
+				// Fx calculado
+				fx1 = f(x1);
+				fxu = f(xu);
+				fxr = f(xr);
+				
+				// Evaluar donde esta la raiz
+				if((fx1 * fxr) < 0){
+					
+					xu = xr;
+				}else{
+					
+					x1 = xr;
+				}
+				
+				// calcular ea
+				if(xr != 0){
+					ea = ((xr - xrAnterior) / xr) * 100;
+					
+					if(ea < 0){
+						ea = ea * -1;
+					}
+				}
+				
+				
+				System.out.println(x1 + " | " + xu + " | " + xr + " | " + fx1 + " | " + fxu + " | " + fxr + " | " + xrAnterior);
+				
+				
+			} while(ea  >  1);
+			
+		}else  {
+			
+			System.out.println("no raiz en el intervalo");
+			
+			
+		}
+			
+		
+	}
+
+}
