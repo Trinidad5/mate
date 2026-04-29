@@ -1,0 +1,107 @@
+package Main;
+
+public class Mat {
+
+	
+	
+
+    // Metodo para la funcion f(x) = x^2 - 3x - 4
+    public static double f(double x) {
+
+        double resultado = 0.0;
+
+        resultado = (x * x) - (3 * x) - 4;
+
+        return resultado;
+        
+        
+    }
+
+
+    public Mat() {
+        // Constructor
+    }
+
+    
+    
+    
+
+    public static void main(String[] args) {
+
+        // Variables para el metodo de Biseccion
+        double x1  = 0;
+        double xu  = 10;
+        double xr  = 0.0;
+        double ea  = 100.0;
+        double fx1 = 0.0;
+        double fxu = 0.0;
+        double fxr = 0.0;
+        double xrAnterior = 0.0;
+        int i = 0;
+
+
+        // Cabecera
+        System.out.println("i  |   x1   |   xu   |   xr   |  f(x1)  |  f(xu)  |  f(xr)  |  Ea%");
+   
+
+        
+        
+        
+
+        // Eval si hay raiz en el rango
+        if (f(x1) * f(xu) < 0) {
+
+            // Metodo Biseccion
+            do {
+            	
+            	
+            	
+
+                i++;
+                xrAnterior = xr;
+                
+                
+                
+
+                // Xr calculado
+                xr = (x1 + xu) / 2;
+                
+                
+                
+                
+                
+
+                // Fx calculado
+                fx1 = f(x1);
+                fxu = f(xu);
+                fxr = f(xr);
+
+                // Donde esta la raiz
+                if (fx1 * fxr < 0) {
+                    xu = xr;
+                } else {
+                    x1 = xr;
+                }
+
+                // Calcular Ea
+                if (xr != 0) {
+                    ea = ((xr - xrAnterior) / xr) * 100;
+                    if (ea < 0) {
+                        ea = ea * -1;
+                        
+                        
+                        
+                        
+                    }
+                }
+
+               
+                System.out.println(i + " | " + x1 + " | " + xu + " | " + xr
+                    + " | " + fx1 + " | " + fxu + " | " + fxr
+                    + " | " + ea);
+
+            } while (ea > 1.0);
+
+            System.out.println("Raiz aproximada: " + xr);
+
+        }}}
